@@ -1,0 +1,8 @@
+{
+    "connectionDataBase": {
+        "host": "localhost",
+        "dbname": "NF17",
+        "username": "root",
+        "password": "root"
+    }
+}

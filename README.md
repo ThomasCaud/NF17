@@ -12,8 +12,21 @@
 * git branch //Connaitre votre branche courante
 * git checkout #NomBrancheExistante //Se placer sur une branche qui existe déjà
 * git checkout -b #NomNouvelleBrance //Créer et aller sur une nouvelle branche
-* git push origin #NomDeVotreBranche //Pousse vos data sur le git 
+* git push origin #NomDeVotreBranche //Pousse vos data sur le git
 
 ## Bonnes pratiques
 * Ne pas commit sur master svp
 * Nom des branches : taskX (X = numéro de la tâche sur le backlog)
+
+## Fichier de config de base
+```json
+{
+    "connectionDataBase" : {
+        "driver" : "pgsql",
+        "host" : "localhost",
+        "dbname" : "nf17",
+        "username" : "root",
+        "password" : null
+    }
+}
+```

@@ -1,8 +1,9 @@
 {
     "connectionDataBase": {
+        "driver": "pgsql",
         "host": "localhost",
-        "dbname": "NF17",
-        "username": "root",
-        "password": "root"
+        "dbname": "nf17",
+        "username": "postgres",
+        "password": null
     }
 }

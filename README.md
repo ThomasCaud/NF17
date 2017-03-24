@@ -30,3 +30,10 @@
     }
 }
 ```
+## Architecture du projet
+
+### Dossiers
+- web : Dossier vers lequel doit pointer le vhost contient le fichier index.php par lequel toutes les requêtes passent. Il contient aussi toutes les ressources publiques (images, scripts, etc.)
+- controller : Dossier contenant tous les controlleurs. Si l'on veut créer une url "/vin/add", ont doit placer un fichier add.php dans le dossier vin de ce dossier.
+- views : Dossier contenant toutes les vues. même structure que 'controller', si "/controller/vin/add.php" existe, alors "/views/vin/add.php", la vue associée, doit exister.
+- app : Dossier contenant tous les services, classe de connexion à la bdd, etc.

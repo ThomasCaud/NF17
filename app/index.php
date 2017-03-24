@@ -1,5 +1,8 @@
 <?php
 	include 'Connexion.php';
 	$connection = Connexion::getConnexion();
-	var_dump($connection);
+	$vins = $connection->query('SELECT * FROM vin');
+
+	echo "<pre>";
+	var_dump($vins->fetchAll());
 ?>

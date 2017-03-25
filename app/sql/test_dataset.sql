@@ -52,3 +52,7 @@ INSERT INTO exploitation (parcelle_nom, annee, modeCulture) values
 INSERT INTO impact (exploitation_annee, exploitation_parcelle, evenement_type, date) values
     (2016, 'P-01', 'Sécheresse', '2016-07-02'),
     (2016, 'P-02', 'Ouragan',    '2016-08-02');
+
+INSERT INTO traite (exploitation_annee, exploitation_parcelle, traitement_nom) values
+    (2016, 'P-01', 'Pesticide'),
+    (2016, 'P-01', 'Herbicide');

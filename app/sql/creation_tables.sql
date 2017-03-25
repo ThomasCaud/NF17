@@ -1,6 +1,6 @@
 CREATE TYPE EtypeSol AS ENUM ('Calcaire','Argileux','Crayeux','Marneux');
 CREATE TYPE Eexposition AS ENUM ('Ensoleille','Venteux','Normal','Pluvieux');
-CREATE TYPE EmodeCulture AS ENUM ('En culture','Desherbe','Enherbe');
+CREATE TYPE EmodeCulture AS ENUM ('Desherbé','Enherbé');
 
 CREATE TABLE cepage (nom varchar(255) PRIMARY KEY);
 
@@ -35,9 +35,9 @@ CREATE TABLE evenement (
 CREATE TABLE impact (
 			exploitation_annee int,
 			exploitation_parcelle varchar(255),
-			FOREIGN KEY (exploitation_annee, exploitation_parcelle) REFERENCES exploitation (annee,parcelle_nom),
-			date timestamp NOT NULL,
 			evenement_type varchar(255) REFERENCES evenement (type),
+			date timestamp NOT NULL,
+			FOREIGN KEY (exploitation_annee, exploitation_parcelle) REFERENCES exploitation (annee,parcelle_nom),
 			PRIMARY KEY (exploitation_parcelle, evenement_type, date)
 			);
 CREATE TABLE vin (

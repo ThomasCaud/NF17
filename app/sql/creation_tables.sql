@@ -25,8 +25,8 @@ CREATE TABLE traitement (
 CREATE TABLE traite (
 			exploitation_annee int,
 			exploitation_parcelle varchar(255),
-			FOREIGN KEY (exploitation_annee, exploitation_parcelle) REFERENCES exploitation (annee,parcelle_nom),
 			traitement_nom varchar(255) REFERENCES traitement(nom),
+			FOREIGN KEY (exploitation_annee, exploitation_parcelle) REFERENCES exploitation (annee,parcelle_nom),
 			PRIMARY KEY(exploitation_annee, exploitation_parcelle, traitement_nom)
 			);
 CREATE TABLE evenement (

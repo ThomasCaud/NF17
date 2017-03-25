@@ -39,3 +39,16 @@ INSERT INTO note (vin_nom, critere_nom, note) values
     ('Chablis', 'Equilibre gustatif', 5),
     ('Chablis', 'Longueur en bouche', 10),
     ('Sancerre', 'Longueur en bouche', 16);
+
+INSERT INTO parcelle (nom, surface, typeSol, exposition, cepage_nom) values
+    ('P-01', 1, 'Crayeux',  'Normal', 'Sauvignon'),
+    ('P-02', 5, 'Crayeux',  'Venteux', 'Carignan'),
+    ('P-03', 2, 'Argileux', 'Ensoleille', 'Muscat à petits grains');
+
+INSERT INTO exploitation (parcelle_nom, annee, modeCulture) values
+    ('P-01', 2016, 'Desherbé'),
+    ('P-02', 2016, 'Enherbé');
+
+INSERT INTO impact (exploitation_annee, exploitation_parcelle, evenement_type, date) values
+    (2016, 'P-01', 'Sécheresse', '2016-07-02'),
+    (2016, 'P-02', 'Ouragan',    '2016-08-02');

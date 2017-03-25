@@ -32,7 +32,9 @@ CREATE TABLE evenement (
 			type varchar(255) PRIMARY KEY
 			);
 CREATE TABLE impact (
-			exploitation_parcelle varchar(255) REFERENCES exploitation (parcelle_nom),
+			exploitation_annee int,
+			exploitation_parcelle varchar(255),
+			FOREIGN KEY (exploitation_annee, exploitation_parcelle) REFERENCES exploitation (annee,parcelle_nom),
 			date timestamp NOT NULL,
 			evenement_type varchar(255) REFERENCES evenement (type),
 			PRIMARY KEY (exploitation_parcelle, evenement_type, date)
@@ -43,9 +45,11 @@ CREATE TABLE vin (
 			);
 CREATE TABLE assemblage (
 			pourcentage int NOT NULL DEFAULT 100,
-			exploitation_nom VARCHAR(255) REFERENCES exploitation(parcelle_nom),
+			exploitation_annee int,
+			exploitation_parcelle varchar(255),
+			FOREIGN KEY (exploitation_annee, exploitation_parcelle) REFERENCES exploitation (annee,parcelle_nom),
 			vin_nom VARCHAR(255) REFERENCES vin (nom),
-			PRIMARY KEY (vin_nom, exploitation_nom)
+			PRIMARY KEY (vin_nom, exploitation_parcelle, exploitation_annee)
 			);
 CREATE TABLE critere (
 			nom varchar(255) PRIMARY KEY

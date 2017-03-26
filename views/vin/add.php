@@ -1,3 +1,2 @@
-<form class="" action="index.html" method="post">
-    <input type="text" name="name" value="">
-</form>
+<h2>Ajout d'un vin</h2>
+ <?php include 'form.php';

@@ -6,9 +6,12 @@
     <link rel="stylesheet" href="/public/bootstrap/css/bootstrap.css" media="screen" title="no title">
   </head>
   <body>
-      <header>
-          <h1>Exploitation agricole</h1>
-      </header>
-    <?php require_once dirname(__FILE__)."/".$viewFile ?>
+      <div class="container">
+          <header>
+              <h1>Exploitation agricole</h1>
+          </header>
+
+          <?php require_once dirname(__FILE__)."/".$viewFile ?>
+      </div>
   </body>
 </html>

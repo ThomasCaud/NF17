@@ -1,6 +1,6 @@
 <h2>Liste des vins</h2>
 
-<table border="1">
+<table class="table">
     <thead>
         <tr>
             <th>Nom</th>

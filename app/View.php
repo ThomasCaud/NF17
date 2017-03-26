@@ -2,7 +2,7 @@
 
 class View
 {
-      public function render($path) {
+      public function render($path, $vars) {
           global $viewFile;
           $viewFile = $path;
           if(!file_exists("../views/".$viewFile)) {
@@ -11,6 +11,11 @@ class View
               die();
           }
 
+          if(is_array($vars)) {
+              extract($vars);
+              unset($vars);
+          }
+          
           require_once '../views/layout.php';
       }
 }

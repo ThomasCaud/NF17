@@ -65,4 +65,4 @@ CREATE TABLE note (
 			);
 
 CREATE VIEW vin_view AS
-	SELECT vin.*, AVG(note) as note FROM vin LEFT JOIN note ON vin.nom = note.vin_nom GROUP BY vin.nom;
+	SELECT vin.*, ROUND(AVG(note), 2) as note FROM vin LEFT JOIN note ON vin.nom = note.vin_nom GROUP BY vin.nom;

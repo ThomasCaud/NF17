@@ -5,6 +5,7 @@ include '../app/Form.php';
 
 $pdo = Connexion::getConnexion();
 $errors = false;
+$vin = false;
 
 // Si le formulaire est soumit
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -48,5 +49,6 @@ $exploitations = $pdo->query('SELECT * FROM exploitation JOIN parcelle ON exploi
 return [
     'exploitations' => $exploitations,
     'errors'    => $errors,
+    'vin'       => $vin,
 ];
 ?>

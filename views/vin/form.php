@@ -1,12 +1,12 @@
 <form method="post">
     <div class="form-group">
       <label >Nom</label>
-      <input type="text" name="vin[nom]" class="form-control">
+      <input type="text" name="vin[nom]" class="form-control" value="<?= isset($vin['nom']) ? $vin['nom'] : '' ?>">
     </div>
 
     <div class="form-group">
       <label>Prix</label>
-      <input type="text" name="vin[prix]" class="form-control">
+      <input type="text" name="vin[prix]" class="form-control" value="<?= isset($vin['prix']) ? $vin['prix'] : '' ?>">
     </div>
 
     <div class="row">
@@ -37,5 +37,5 @@
         <?= $errors ? implode($errors, "<br/>") :'' ?>
     </div>
     <?php endif; ?>
-    <button type="submit" class="btn btn-primary">Créer</button>
+    <button type="submit" class="btn btn-primary">Sauvegarder</button>
 </form>

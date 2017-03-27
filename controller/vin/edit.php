@@ -15,6 +15,19 @@ if (!$vin) {
     return View::render404("Vin introuvable");
 }
 
+// Si le formulaire est soumit
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $viForm = $_POST['vin'];
+    $updateVin = $pdo->prepare('UPDATE vin SET nom = :postNom, prix = :prix WHERE nom = :nom');
+    $updateVin->execute([
+        'postNom' => $viForm['nom'],
+        'prix'    => $viForm['prix'],
+        'nom'     => $_GET['nom'],
+    ]);
+
+    header('Location: /vin/list');
+}
+
 return [
     'vin' => $vin,
     'errors' => false,

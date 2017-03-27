@@ -14,8 +14,7 @@ $action = trim($action, '/');
 $controller = "../controller/".$action;
 $vars = [];
 if (!file_exists($controller)) {
-    header("HTTP/1.0 404 Not Found");
-    $action = "404.php";
+    return View::render404();
 } else {
     $vars = require $controller;
 }

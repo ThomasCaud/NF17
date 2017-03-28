@@ -12,12 +12,11 @@ $action = trim($action, '/');
 
 // include controller if exist else 404
 $controller = "../controller/".$action;
-
+$vars = [];
 if (!file_exists($controller)) {
-    header("HTTP/1.0 404 Not Found");
-    $action = "404.php";
+    return View::render404();
 } else {
-    require $controller;
+    $vars = require $controller;
 }
 // render view
-View::render($action);
+View::render($action, $vars);

@@ -1,34 +1,32 @@
 <?php
 include_once '../app/Connexion.php';
+include_once '../app/Entity/Vin.php';
 
 if (!isset($_GET['nom']) || empty($_GET['nom'])) {
     return View::render404("Vin introuvable");
 }
 
-$pdo = Connexion::getConnexion();
 
-$sth = $pdo->prepare('SELECT * FROM vin WHERE nom = :nom');
-$sth->execute(['nom' => $_GET['nom']]);
-
-$vin = $sth->fetch();
+$vin = Vin::get($_GET['nom']);
 if (!$vin) {
     return View::render404("Vin introuvable");
 }
 
-// Si le formulaire est soumit
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $viForm = $_POST['vin'];
-    $updateVin = $pdo->prepare('UPDATE vin SET nom = :postNom, prix = :prix WHERE nom = :nom');
-    $updateVin->execute([
-        'postNom' => $viForm['nom'],
-        'prix'    => $viForm['prix'],
-        'nom'     => $_GET['nom'],
-    ]);
+$errors = false;
 
-    header('Location: /vin/list');
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $vinData = $_POST['vin'];
+    if (!Vin::update($_GET['nom'], [
+        'nom' => $vinData['nom'],
+        'prix'=> $vinData['prix'],
+    ])) {
+        $errors[] = "Erreur interne, impossible de mettre à jour le vin";
+    } else {
+        header('Location: /vin/list');
+    }
 }
 
 return [
     'vin' => $vin,
-    'errors' => false,
+    'errors' => $errors,
 ];

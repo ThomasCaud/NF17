@@ -1,6 +1,7 @@
 <?php
 
 include '../app/Connexion.php';
+include '../app/Entity/Vin.php';
 include '../app/Form.php';
 
 $pdo = Connexion::getConnexion();
@@ -15,6 +16,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $form->constraints('prix', ['required' => true]);
 
     $errors = $form->checkForm();
+
+    if (Vin::get($vin['nom'])) {
+        $errors['nom'] = "Le vin ".$vin['nom']." existe déjà";
+    }
 
     if(!$errors) {
         $sth = $pdo->prepare('INSERT INTO vin(nom, prix) VALUES (:nom, :prix)');

@@ -49,6 +49,14 @@ INSERT INTO exploitation (parcelle_nom, annee, modeCulture) values
     ('P-01', 2016, 'Desherbé'),
     ('P-02', 2016, 'Enherbé');
 
+INSERT INTO assemblage (pourcentage, exploitation_annee, exploitation_parcelle, vin_nom) VALUES
+    (50.0, 2016, 'P-01', 'Chablis'),
+    (50.0, 2016, 'P-02', 'Chablis'),
+    (100.0, 2016, 'P-01', 'Saint-Amour'),
+    (100.0, 2016, 'P-02', 'Pouilly-Fuissé'),
+    (50.0, 2016, 'P-01', 'Sancerre'),
+    (50.0, 2016, 'P-02', 'Sancerre');
+
 INSERT INTO impact (exploitation_annee, exploitation_parcelle, evenement_type, date) values
     (2016, 'P-01', 'Sécheresse', '2016-07-02'),
     (2016, 'P-02', 'Ouragan',    '2016-08-02');

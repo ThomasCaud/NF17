@@ -16,7 +16,7 @@
                 <td><?= $vin['prix'] ?> €</td>
                 <td><?= $vin['note'] ? $vin['note'] . ' <small>/20</small>' : 'Pas de note' ?></td>
                 <td>
-                    <a href="#">Editer</a> -
+                    <a href="/vin/edit?nom=<?= $vin['nom'] ?>">Editer</a> -
                     <a href="#">Supprimer</a> -
                     <a href="#">Noter</a>
                 </td>

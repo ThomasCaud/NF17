@@ -1,10 +1,12 @@
 <?php
 
 include '../app/Connexion.php';
+include '../app/Entity/Vin.php';
 include '../app/Form.php';
 
 $pdo = Connexion::getConnexion();
 $errors = false;
+$vin = false;
 
 // Si le formulaire est soumit
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -14,6 +16,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $form->constraints('prix', ['required' => true]);
 
     $errors = $form->checkForm();
+
+    if (Vin::get($vin['nom'])) {
+        $errors['nom'] = "Le vin ".$vin['nom']." existe déjà";
+    }
 
     if(!$errors) {
         $sth = $pdo->prepare('INSERT INTO vin(nom, prix) VALUES (:nom, :prix)');
@@ -48,5 +54,6 @@ $exploitations = $pdo->query('SELECT * FROM exploitation JOIN parcelle ON exploi
 return [
     'exploitations' => $exploitations,
     'errors'    => $errors,
+    'vin'       => $vin,
 ];
 ?>

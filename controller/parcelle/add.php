@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $parcelle = $_POST['parcelle'];
     $form = new Form($parcelle);
     $form->constraints('nom', ['required' => true]);
-    $form->constraints('taille', ['required' => true]);
+    $form->constraints('surface', ['required' => true]);
 
     $errors = $form->checkForm();
 
@@ -22,10 +22,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     if(!$errors) {
-        $sth = $pdo->prepare('INSERT INTO parcelle(nom, surface, typesol, exposition, cepage_nom) VALUES (:nom, :taille, :sol, :exposition, :cepage)');
+        $sth = $pdo->prepare('INSERT INTO parcelle(nom, surface, typesol, exposition, cepage_nom) VALUES (:nom, :surface, :sol, :exposition, :cepage)');
         try {
             $pdo->beginTransaction();
-            $sth->execute(['nom' => $parcelle['nom'], 'taille' => $parcelle['taille'], 'sol' => $parcelle['sol'], 'exposition' => $parcelle['exposition'], 'cepage' => $parcelle['cepage']]);
+            $sth->execute(['nom' => $parcelle['nom'], 'surface' => $parcelle['surface'], 'sol' => $parcelle['sol'], 'exposition' => $parcelle['exposition'], 'cepage' => $parcelle['cepage']]);
 
             $pdo->commit();
 

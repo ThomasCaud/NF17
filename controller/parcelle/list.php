@@ -5,7 +5,7 @@ include '../app/Connexion.php';
 $pdo = Connexion::getConnexion();
 
 
-$sql = 'SELECT DISTINCT parcelle_view.* FROM parcelle_view';
+$sql = 'SELECT DISTINCT parcelle.* FROM parcelle';
 
 
 $query = $pdo->query($sql);

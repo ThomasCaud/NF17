@@ -5,8 +5,8 @@
     </div>
 
     <div class="form-group">
-      <label>Taille</label>
-      <input type="number" name="parcelle[taille]" class="form-control" value="<?= isset($parcelle['taille']) ? $parcelle['taille'] : '' ?>">
+      <label>surface</label>
+      <input type="number" name="parcelle[surface]" class="form-control" value="<?= isset($parcelle['surface']) ? $parcelle['surface'] : '' ?>">
     </div>
 
     <div class="row">
@@ -19,7 +19,7 @@
 		                     <option value="Calcaire">Calcaire</option>
                              <option value="Argileux">Argileux</option>
                              <option value="Crayeux">Crayeux</option>
-                             <option value="Marneux">Marneux</option>    
+                             <option value="Marneux">Marneux</option>
 		                </select>
 		            </div>
 		        </div>
@@ -37,7 +37,7 @@
 		                     <option value="Normal">Normal</option>
                              <option value="Pluvieux">Pluvieux</option>
                              <option value="Ensoleillé">Ensoleillé</option>
-                             <option value="Venteux">Venteux</option>      
+                             <option value="Venteux">Venteux</option>
 		                </select>
 		            </div>
 		        </div>

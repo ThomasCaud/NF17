@@ -1,6 +1,6 @@
-<a href="/parcelle/add" class="btn btn-primary">Ajouter un parcelle</a>
+<a href="/parcelle/add" class="btn btn-primary">Ajouter une parcelle</a>
 <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-12">
         <h2>Liste des parcelles</h2>
         <table class="table">
             <thead>
@@ -17,13 +17,11 @@
                     <tr>
                         <td><?= $parcelle['nom'] ?></td>
                         <td><?= $parcelle['surface'] ?> hectares</td>
-                        <td><?= $parcelle['typeSol'] ?></td>
+                        <td><?= $parcelle['typesol'] ?></td>
 						<td><?= $parcelle['exposition'] ?></td>
 						<td><?= $parcelle['cepage_nom'] ?></td>
                         <td>
-                            <a href="/parcelle/edit?nom=<?= $parcelle['nom'] ?>">Editer</a> -
-                            <a href="#">Supprimer</a> -
-                            <a href="#">Noter</a>
+                            <a href="/parcelle/edit?nom=<?= $parcelle['nom'] ?>">Editer</a>
                         </td>
                     </tr>
                 <?php endforeach; ?>

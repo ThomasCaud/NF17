@@ -42,12 +42,11 @@ abstract class BaseEntity
     private function primaryKeyCondition($id) {
         if(is_array(static::getPrimaryKey())) {
             if (is_array($id)) {
-                if (array_key($id) == static::getPrimaryKey()) {
+                if (array_keys($id) == static::getPrimaryKey()) {
 
                     $conditions = array_map(function ($field) {
-                        return $field." :".$field;
+                        return $field." = :".$field;
                     }, static::getPrimaryKey());
-
                     return implode(" AND ", $conditions);
                 } else {
                     throw new LogicException("La clé primaire est : ".implode(', ',static::getPrimaryKey()));

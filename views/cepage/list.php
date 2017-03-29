@@ -13,7 +13,7 @@
                     <tr>
                         <td><?= $cepage['nom'] ?></td>
                         <td>
-                            <a href="#">Editer</a> -
+                            <a href="/cepage/edit?oldName=<?= $cepage['nom'] ?>">Editer</a> -
                             <a href="#">Supprimer</a>
                         </td>
                     </tr>

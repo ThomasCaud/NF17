@@ -7,8 +7,8 @@
     <button type="submit" class="btn btn-primary">Sauvegarder</button>
 </form>
 
-    <?php if ($errors): ?>
-    <div class="alert alert-danger">
-        <?= $errors ? implode($errors, "<br/>") :'' ?>
-    </div>
-    <?php endif; ?>
+<?php if ($errors): ?>
+<div class="alert alert-danger">
+    <?= $errors ? implode($errors, "<br/>") :'' ?>
+</div>
+<?php endif; ?>

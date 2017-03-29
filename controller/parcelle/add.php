@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     if(!$errors) {
-        $sth = $pdo->prepare('INSERT INTO parcelle(nom, taille, sol, exposition, cepage) VALUES (:nom, :taille, :sol, :exposition, :cepage)');
+        $sth = $pdo->prepare('INSERT INTO parcelle(nom, surface, typesol, exposition, cepage_nom) VALUES (:nom, :taille, :sol, :exposition, :cepage)');
         try {
             $pdo->beginTransaction();
             $sth->execute(['nom' => $parcelle['nom'], 'taille' => $parcelle['taille'], 'sol' => $parcelle['sol'], 'exposition' => $parcelle['exposition'], 'cepage' => $parcelle['cepage']]);
@@ -34,6 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } catch(PDOException $e) {
             $pdo->rollback();
             $errors[] = "Erreur interne de la BDD";
+            throw $e;
         }
     }
 }

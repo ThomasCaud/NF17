@@ -1,15 +1,14 @@
 <?php
 
+include_once 'Config.php';
+
 class Connexion
 {
 	public static $connexion = null;
-	const CONFIG_PATH = "../config.json";
 
 	public static function getConnexion() {
 		if (Connexion::$connexion == null) {
-			$config = file_get_contents(self::CONFIG_PATH);
-			$config = json_decode($config, true);
-			$config = $config['connectionDataBase'];
+			$config = Config::get('connectionDataBase');
 
 			$dns = $config['driver'].":dbname=".$config['dbname'].";host=".$config['host'];
 			try {

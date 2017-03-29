@@ -1,7 +1,11 @@
 <?php
 include "../app/View.php";
+include "../app/Config.php";
 
 $uri = isset($_SERVER["REDIRECT_URL"]) ? $_SERVER["REDIRECT_URL"] : $_SERVER["REQUEST_URI"];
+
+$baseUrl = Config::get('baseUrl');
+$uri = str_replace($baseUrl, '', $uri);
 
 if ($uri == '/') {
     $action = "index.php";

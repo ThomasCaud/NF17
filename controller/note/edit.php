@@ -2,11 +2,12 @@
 include_once '../app/Connexion.php';
 include_once '../app/Entity/Note.php';
 
-if ((!isset($_GET['critere_nom']) || empty($_GET['critere_nom']))&&(!isset($_GET['vin_nom']) || empty($_GET['vin_nom']))) {
+if ((!isset($_GET['critere_nom']) || empty($_GET['critere_nom'])) && (!isset($_GET['vin_nom']) || empty($_GET['vin_nom']))) {
     return View::render404("critere ou vin utilisé introuvable");
 }
 
-$note = note::get($_GET['citere_nom'],$_GET['vin_nom']);
+$note = Note::get(['critere_nom' => $_GET['critere_nom'], 'vin_nom' => $_GET['vin_nom']]);
+
 if (!$note) {
     return View::render404("critere ou vin utilisé introuvable");
 }

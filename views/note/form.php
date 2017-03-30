@@ -23,7 +23,7 @@
             <div class="form-group row" id="critere">
                 <div class="col-md-10">
                     <div class="form-group">
-                        <select class="form-control" name="note[critere_nom]">
+                        <select class="form-control" name="note[critere_nom]" value="Couleur">
                             <?php foreach ($criteres as $critere): ?>
                                 <option value="<?= $critere['nom'] ?>"><?= $critere['nom'] ?></option>
                             <?php endforeach; ?>
@@ -36,11 +36,9 @@
 
     <div class="form-group">
       <label>Note</label>
-      <input type="number" class="form-control" name="note[note]" max="20" min="0" value="">
+      <input type="number" class="form-control" name="note[note]" max="20" min="0" value="<?= isset($note['note']) ? $note['note'] : '' ?>">
     </div>
 
-    
-    <button type="button" class="btn btn-primary">Ajouter une note</button>
     <?php if ($errors): ?>
     <div class="alert alert-danger">
         <?= $errors ? implode($errors, "<br/>") :'' ?>

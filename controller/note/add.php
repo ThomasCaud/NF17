@@ -16,8 +16,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $errors = $form->checkForm();
 
-    if (Note::get($note['critere_nom'])&&Note::get($note['vin_nom'])) {
-        $errors['critere_nom','vin_nom'] = "Le vin ".$note['vin_nom']." a déjà été noté sur le critère ".$note['critere_nom'];
+    if (Note::get(['critere_nom' => $note['critere_nom'], 'vin_nom' => $note['vin_nom']])) {
+        $errors[] = "Le vin ".$note['vin_nom']." a déjà été noté sur le critère ".$note['critere_nom'];
     }
 
     if(!$errors) {

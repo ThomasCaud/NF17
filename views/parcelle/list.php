@@ -19,7 +19,7 @@
                         <td><?= $parcelle['surface'] ?> hectares</td>
                         <td><?= $parcelle['typesol'] ?></td>
 						<td><?= $parcelle['exposition'] ?></td>
-						<td><?= $parcelle['cepage_nom'] ?></td>
+						<td><a href="/cepage/edit?oldName=<?= $parcelle['cepage_nom'] ?>"><?= $parcelle['cepage_nom'] ?></a></td>
                         <td>
                             <a href="/parcelle/edit?nom=<?= $parcelle['nom'] ?>">Editer</a>
                         </td>

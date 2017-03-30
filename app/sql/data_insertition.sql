@@ -64,4 +64,6 @@ INSERT INTO impact (exploitation_annee, exploitation_parcelle, evenement_type, d
 
 INSERT INTO traite (exploitation_annee, exploitation_parcelle, traitement_nom) values
     (2016, 'P-01', 'Pesticide'),
-    (2016, 'P-01', 'Herbicide');
+    (2016, 'P-01', 'Herbicide'),
+    (2016, 'P-02', 'Pesticide'),
+    (2016, 'P-02', 'Insecticide');

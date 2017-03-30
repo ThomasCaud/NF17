@@ -38,9 +38,23 @@ order by exploitation.modeculture;";
 
 $noteMoyenneModeCulture = executeRequest($pdo, $request);
 
+$request = "select traitement.nom, round(sum(assemblage.pourcentage*vinNoteMoyenne.noteMoyenne)/(sum(assemblage.pourcentage)),2) as noteMoyenne 
+from (
+	select nom as nomDuVin, round(avg(note.note),2) as noteMoyenne 
+	from vin join note on (note.vin_nom = vin.nom) group by vin.nom
+	) as vinNoteMoyenne 
+join assemblage on(assemblage.vin_nom = vinNoteMoyenne.nomDuVin) 
+join exploitation on (assemblage.exploitation_annee = exploitation.annee and assemblage.exploitation_parcelle = exploitation.parcelle_nom)
+join traite on (traite.exploitation_annee = exploitation.annee and traite.exploitation_parcelle = exploitation.parcelle_nom)
+join traitement on (traitement.nom = traite.traitement_nom)
+group by traitement.nom;";
+
+$noteMoyenneTraitement = executeRequest($pdo, $request);
+
 return [
     'prixMoyenModeCulture' => $prixMoyenModeCulture,
     'prixMoyenEventClimatique' => $prixMoyenEventClimatique,
-    'noteMoyenneModeCulture' => $noteMoyenneModeCulture
+    'noteMoyenneModeCulture' => $noteMoyenneModeCulture,
+    'noteMoyenneTraitement' => $noteMoyenneTraitement
 ];
 ?>

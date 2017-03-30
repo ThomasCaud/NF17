@@ -1,12 +1,14 @@
 <h2> Liste des requêtes sur l'influences </h2>
 
-<h3> Mode de culture sur le prix des vins </h3>
+<h3> Modes de culture</h3>
+
+<h4> sur le prix du vin </h4>
 <div class="row">
     <div class="col-md-8">
         <table class="table">
             <thead>
                 <tr>
-                    <th>Nom</th>
+                    <th>Mode de culture</th>
                     <th>Prix moyen(€)</th>
                 </tr>
             </thead>
@@ -22,7 +24,30 @@
     </div>
 </div>
 
-<h3> Evenement climatique sur le prix des vins </h3>
+<h4> sur la note du vin </h4>
+<div class="row">
+    <div class="col-md-8">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Mode de culture</th>
+                    <th>Note moyenne(/20)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach($noteMoyenneModeCulture as $resultat): ?>
+                    <tr>
+                        <td><?= $resultat['modeculture'] ?></td>
+                        <td><?= $resultat['notemoyenne'] ?></td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<h3> Evenements climatiques </h3>
+<h4> sur le prix du vin </h4>
 <div class="row">
     <div class="col-md-8">
         <table class="table">

@@ -31,7 +31,7 @@
             <thead>
                 <tr>
                     <th>Mode de culture</th>
-                    <th>Note moyenne(/20)</th>
+                    <th>Qualité (/20)</th>
                 </tr>
             </thead>
             <tbody>
@@ -62,6 +62,29 @@
                     <tr>
                         <td><?= $resultat['type'] ?></td>
                         <td><?= $resultat['prixmoyen'] ?></td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<h3> Traitements phytosanitaires </h3>
+<h4> sur la qualité du vin </h4>
+<div class="row">
+    <div class="col-md-8">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Traitement phytosanitaire</th>
+                    <th>Qualité (/20)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach($noteMoyenneTraitement as $resultat): ?>
+                    <tr>
+                        <td><?= $resultat['nom'] ?></td>
+                        <td><?= $resultat['notemoyenne'] ?></td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>

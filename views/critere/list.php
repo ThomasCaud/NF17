@@ -9,7 +9,7 @@
                 </tr>
             </thead>
             <tbody>
-                <?php foreach($critere as $critere): ?>
+                <?php foreach($criteres as $critere): ?>
                     <tr>
                         <td><?= $critere['nom'] ?></td>
                         <td>

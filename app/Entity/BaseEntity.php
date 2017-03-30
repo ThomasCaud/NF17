@@ -49,7 +49,7 @@ abstract class BaseEntity
                     }, static::getPrimaryKey());
                     return implode(" AND ", $conditions);
                 } else {
-                    throw new LogicException("La clé primaire est : ".implode(', ',static::getPrimaryKey()));
+                    throw new LogicException("La clé primaire est : ".implode(', ',static::getPrimaryKey()). " et celle que tu insères contient : " . implode(',', array_keys($id)));
                 }
             } else {
                 throw new LogicException("La table ".static::getTable()." a une clé primaire composite");

@@ -37,15 +37,13 @@ $links = [
         'label' => 'Exploitation',
         'number' => getNumber('exploitation'),
         'actions' => [
-            'Ajouter' => '/exploitation/add',
-            'Lister' => '/exploitation/list',
+            'Ajouter' => '/exploitation/add'
         ]
     ],
     [
         'label' => 'Influence',
         'number' => getNumber('impact'),
         'actions' => [
-            'Ajouter' => '/influence/add',
             'Lister' => '/influence/list',
         ]
     ],

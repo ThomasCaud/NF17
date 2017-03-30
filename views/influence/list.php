@@ -24,7 +24,7 @@
     </div>
 </div>
 
-<h4> sur la note du vin </h4>
+<h4> sur la qualité du vin </h4>
 <div class="row">
     <div class="col-md-8">
         <table class="table">

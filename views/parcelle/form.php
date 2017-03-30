@@ -13,7 +13,7 @@
 	<div class="col-md-12">
 	      <label for="sol">Sol</label>
 		    <div class="form-group row" id="sol">
-		        <div class="col-md-10">
+		        <div class="col-md-12">
 		            <div class="form-group">
 		                <select class="form-control" name="parcelle[sol]">
 		                     <option value="Calcaire">Calcaire</option>
@@ -31,7 +31,7 @@
 	<div class="col-md-12">
 	      <label for="exposition">Exposition</label>
 		    <div class="form-group row" id="exposition">
-		        <div class="col-md-10">
+		        <div class="col-md-12">
 		            <div class="form-group">
 		                <select class="form-control" name="parcelle[exposition]">
 		                     <option value="Normal">Normal</option>
@@ -49,10 +49,10 @@
         <div class="col-md-12">
             <label for="cepage">Cépage</label>
             <div class="form-group row" id="cepage">
-                <div class="col-md-10">
+                <div class="col-md-12">
                     <div class="form-group">
                         <select class="form-control" name="parcelle[cepage]">
-                            <?php foreach ($cepage as $cepage): ?>
+                            <?php foreach ($cepages as $cepage): ?>
                                 <option value="<?= $cepage['nom'] ?>"><?= $cepage['nom'] ?></option>
                             <?php endforeach; ?>
                         </select>
@@ -61,7 +61,6 @@
             </div>
         </div>
     </div>
-    <button type="button" class="btn btn-primary">Ajouter un cépage</button>
     <?php if ($errors): ?>
     <div class="alert alert-danger">
         <?= $errors ? implode($errors, "<br/>") :'' ?>

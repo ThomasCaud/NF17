@@ -39,11 +39,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-$cepage = $pdo->query('SELECT * FROM cepage')->fetchAll();
+$cepages = $pdo->query('SELECT * FROM cepage')->fetchAll();
 
 return [
-    'cepage' => $cepage,
-    'errors'    => $errors,
-    'parcelle'       => $parcelle,
+    'cepages'  => $cepages,
+    'errors'   => $errors,
+    'parcelle' => $parcelle,
 ];
 ?>

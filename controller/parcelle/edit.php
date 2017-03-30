@@ -21,15 +21,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'surface'=> $parcelleData['surface'],
 	    'typeSol'=> $parcelleData['typeSol'],
         'exposition'=> $parcelleData['exposition'],
-        'cepage_nom'=> $parcelleData['cepage_nom']
+        'cepage_nom'=> $parcelleData['cepage'],
     ])) {
         $errors[] = "Erreur interne, impossible de mettre à jour le parcelle";
     } else {
         header('Location: /parcelle/list');
     }
 }
+$pdo = Connexion::getConnexion();
+$cepages = $pdo->query('SELECT * FROM cepage')->fetchAll();
 
 return [
     'parcelle' => $parcelle,
-    'errors' => $errors,
+    'errors'   => $errors,
+    'cepages'  => $cepages,
 ];

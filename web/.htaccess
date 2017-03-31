@@ -2,8 +2,11 @@
     RewriteEngine on
     RewriteBase /
 
-    RewriteCond %{REQUEST_FILENAME} -f
-    RewriteRule ^ - [L]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^(.*) index.php
 
-    RewriteRule ^ %{ENV:BASE}/index.php [L]
+    #RewriteCond %{REQUEST_FILENAME} -f
+    #RewriteRule ^ - [L]
+
+    #RewriteRule ^ %{ENV:BASE}/index.php [L]
 </IfModule>

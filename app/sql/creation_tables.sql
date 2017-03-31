@@ -61,6 +61,7 @@ CREATE TABLE note (
 			note int NOT NULL CHECK(note >= 0 AND note <= 20),
 			critere_nom VARCHAR(255) REFERENCES critere(nom) ON UPDATE CASCADE ON DELETE CASCADE,
 			vin_nom  VARCHAR(255) REFERENCES vin(nom) ON UPDATE CASCADE ON DELETE CASCADE,
+			annee int NOT NULL,
 			PRIMARY KEY(critere_nom, vin_nom)
 			);
 

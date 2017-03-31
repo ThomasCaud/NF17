@@ -31,7 +31,7 @@
             <thead>
                 <tr>
                     <th>Mode de culture</th>
-                    <th>Qualité (/20)</th>
+                    <th>Qualité moyenne(/20)</th>
                 </tr>
             </thead>
             <tbody>
@@ -77,7 +77,7 @@
             <thead>
                 <tr>
                     <th>Traitement phytosanitaire</th>
-                    <th>Qualité (/20)</th>
+                    <th>Qualité moyenne(/20)</th>
                 </tr>
             </thead>
             <tbody>
@@ -100,13 +100,36 @@
             <thead>
                 <tr>
                     <th>Type d'exposition</th>
-                    <th>Qualité (/20)</th>
+                    <th>Qualité moyenne(/20)</th>
                 </tr>
             </thead>
             <tbody>
                 <?php foreach($noteMoyenneExposition as $resultat): ?>
                     <tr>
                         <td><?= $resultat['exposition'] ?></td>
+                        <td><?= $resultat['notemoyenne'] ?></td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<h3> Année </h3>
+<h4> sur la qualité du vin </h4>
+<div class="row">
+    <div class="col-md-8">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Année</th>
+                    <th>Qualité moyenne(/20)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach($noteMoyenneSelonAnnee as $resultat): ?>
+                    <tr>
+                        <td><?= $resultat['annee'] ?></td>
                         <td><?= $resultat['notemoyenne'] ?></td>
                     </tr>
                 <?php endforeach; ?>

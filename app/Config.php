@@ -22,6 +22,9 @@ class Config
         if(static::$config == null) {
             $conf = file_get_contents(self::CONFIG_PATH);
             static::$config = json_decode($conf, true);
+            if (json_last_error() != JSON_ERROR_NONE) {
+                throw new Exception("Json error : ".json_last_error_msg());
+            }
         }
     }
 }

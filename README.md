@@ -27,7 +27,8 @@
         "dbname" : "nf17",
         "username" : "root",
         "password" : null
-    }
+    },
+    "baseUrl" : null
 }
 ```
 ## Architecture du projet
@@ -51,4 +52,3 @@
 - Interface (mais pas prioritaire)
 - Robuste aux injections SQL (séparé la sémantique de la donnée)
 - Explain devant request (optimisation)
-

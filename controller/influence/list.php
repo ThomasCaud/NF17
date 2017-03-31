@@ -65,11 +65,16 @@ order by noteMoyenne desc;";
 
 $noteMoyenneExposition = executeRequest($pdo, $request);
 
+$request = "select annee, round(avg(note), 2) as notemoyenne from note group by annee;";
+
+$noteMoyenneSelonAnnee = executeRequest($pdo, $request);
+
 return [
     'prixMoyenModeCulture' => $prixMoyenModeCulture,
     'prixMoyenEventClimatique' => $prixMoyenEventClimatique,
     'noteMoyenneModeCulture' => $noteMoyenneModeCulture,
     'noteMoyenneTraitement' => $noteMoyenneTraitement,
-    'noteMoyenneExposition' => $noteMoyenneExposition
+    'noteMoyenneExposition' => $noteMoyenneExposition,
+    'noteMoyenneSelonAnnee' => $noteMoyenneSelonAnnee
 ];
 ?>

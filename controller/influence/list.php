@@ -10,7 +10,7 @@ function executeRequest($pdo, $request){
 }
 
 $request = "select exploitation.modeculture, round(sum(assemblage.pourcentage*vin.prix)/(sum(assemblage.pourcentage)),2) as prixmoyen from vin 
-	join assemblage on (vin.nom = assemblage.vin_nom) 
+	join assemblage on (vin.id = assemblage.vin_id) 
 	join exploitation on (assemblage.exploitation_annee = exploitation.annee and assemblage.exploitation_parcelle = exploitation.parcelle_nom) 
 	group by exploitation.modeculture
 	order by prixmoyen desc;";
@@ -18,7 +18,7 @@ $request = "select exploitation.modeculture, round(sum(assemblage.pourcentage*vi
 $prixMoyenModeCulture = executeRequest($pdo, $request);
 
 $request = "select evenement.type, round(sum(assemblage.pourcentage*vin.prix)/(sum(assemblage.pourcentage)),2) as prixmoyen from vin 
-join assemblage on (vin.nom = assemblage.vin_nom) 
+join assemblage on (vin.id = assemblage.vin_id) 
 join exploitation on (assemblage.exploitation_annee = exploitation.annee and assemblage.exploitation_parcelle = exploitation.parcelle_nom)
 join impact on(impact.exploitation_annee = exploitation.annee and impact.exploitation_parcelle = exploitation.parcelle_nom)
 join evenement on(impact.evenement_type = evenement.type)
@@ -29,10 +29,10 @@ $prixMoyenEventClimatique = executeRequest($pdo, $request);
 
 $request = "select exploitation.modeCulture, round(sum(assemblage.pourcentage*vinNoteMoyenne.noteMoyenne)/(sum(assemblage.pourcentage)),2) as noteMoyenne 
 from (
-	select nom as nomDuVin, round(avg(note.note),2) as noteMoyenne 
-	from vin join note on (note.vin_nom = vin.nom) group by vin.nom
+	select id, nom as nomDuVin, round(avg(note.note),2) as noteMoyenne 
+	from vin join note on (note.vin_id = vin.id) group by vin.id
 	) as vinNoteMoyenne 
-join assemblage on(assemblage.vin_nom = vinNoteMoyenne.nomDuVin) 
+join assemblage on(assemblage.vin_id = vinNoteMoyenne.id) 
 join exploitation on (assemblage.exploitation_annee = exploitation.annee and assemblage.exploitation_parcelle = exploitation.parcelle_nom)
 group by exploitation.modeCulture
 order by noteMoyenne desc;";
@@ -41,10 +41,10 @@ $noteMoyenneModeCulture = executeRequest($pdo, $request);
 
 $request = "select traitement.nom, round(sum(assemblage.pourcentage*vinNoteMoyenne.noteMoyenne)/(sum(assemblage.pourcentage)),2) as noteMoyenne 
 from (
-	select nom as nomDuVin, round(avg(note.note),2) as noteMoyenne 
-	from vin join note on (note.vin_nom = vin.nom) group by vin.nom
+	select id, nom as nomDuVin, round(avg(note.note),2) as noteMoyenne 
+	from vin join note on (note.vin_id = vin.id) group by vin.id
 	) as vinNoteMoyenne 
-join assemblage on(assemblage.vin_nom = vinNoteMoyenne.nomDuVin) 
+join assemblage on(assemblage.vin_id = vinNoteMoyenne.id) 
 join exploitation on (assemblage.exploitation_annee = exploitation.annee and assemblage.exploitation_parcelle = exploitation.parcelle_nom)
 join traite on (traite.exploitation_annee = exploitation.annee and traite.exploitation_parcelle = exploitation.parcelle_nom)
 join traitement on (traitement.nom = traite.traitement_nom)
@@ -54,10 +54,10 @@ $noteMoyenneTraitement = executeRequest($pdo, $request);
 
 $request = "select parcelle.exposition, round(sum(assemblage.pourcentage*vinNoteMoyenne.noteMoyenne)/(sum(assemblage.pourcentage)),2) as noteMoyenne 
 from (
-	select nom as nomDuVin, round(avg(note.note),2) as noteMoyenne 
-	from vin join note on (note.vin_nom = vin.nom) group by vin.nom
+	select id, nom as nomDuVin, round(avg(note.note),2) as noteMoyenne 
+	from vin join note on (note.vin_id = vin.id) group by vin.id
 	) as vinNoteMoyenne 
-join assemblage on(assemblage.vin_nom = vinNoteMoyenne.nomDuVin) 
+join assemblage on(assemblage.vin_id = vinNoteMoyenne.id) 
 join exploitation on (assemblage.exploitation_annee = exploitation.annee and assemblage.exploitation_parcelle = exploitation.parcelle_nom)
 join parcelle on (exploitation.parcelle_nom = parcelle.nom)
 group by parcelle.exposition
@@ -65,14 +65,18 @@ order by noteMoyenne desc;";
 
 $noteMoyenneExposition = executeRequest($pdo, $request);
 
-$request = "select annee, round(avg(note), 2) as notemoyenne from note group by annee;";
+$request = "select annee, round(avg(note), 2) as notemoyenne from vin
+join note on (vin.id = note.vin_id)
+group by annee
+order by annee desc;";
 
 $noteMoyenneSelonAnnee = executeRequest($pdo, $request);
 
-$request = "select round(avg(note.note),2) as noteMoyenne, vin.nom, round(avg(vin.prix),2) as prixMoyen from vin
-join note on (vin.nom = note.vin_nom)
+$request = "select vin.nom, round(avg(vin.prix), 2) as prixMoyen, round(avg(note.note), 2) as noteMoyenne
+from vin
+join note on (vin.id = note.vin_id)
 group by vin.nom
-order by noteMoyenne desc;";
+order by noteMoyenne;";
 
 $noteMoyenneParVin = executeRequest($pdo, $request);
 

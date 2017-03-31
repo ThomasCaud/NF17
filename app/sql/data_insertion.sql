@@ -31,7 +31,8 @@ INSERT INTO vin (id, nom, prix, annee) values
     (1, 'Saint-Amour', 5.3, 2016),
     (2, 'Chablis', 4.1, 2016),
     (3, 'Pouilly-Fuissé', 3.0, 2016),
-    (4, 'Sancerre', 5.1, 2016);
+    (4, 'Sancerre', 5.1, 2016),
+    (5, 'Pouilly-Fuissé', 3.5, 2017);
 
 INSERT INTO note (vin_id, critere_nom, note) values
     (1 , 'Equilibre gustatif', 12),
@@ -40,7 +41,9 @@ INSERT INTO note (vin_id, critere_nom, note) values
     (4, 'Longueur en bouche', 16),
     (2, 'Longueur en bouche', 10),
     (3, 'Longueur en bouche', 12),
-    (3, 'Equilibre gustatif', 14);
+    (3, 'Equilibre gustatif', 14),
+    (5, 'Longueur en bouche', 14),
+    (5, 'Equilibre gustatif', 16);
 
 INSERT INTO parcelle (nom, surface, typeSol, exposition, cepage_nom) values
     ('P-01', 1, 'Crayeux',  'Normal', 'Sauvignon'),

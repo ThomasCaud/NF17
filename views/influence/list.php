@@ -146,16 +146,18 @@
             <thead>
                 <tr>
                     <th>Qualité moyenne(/20)</th>
-                    <th>Nom du vin</th>
                     <th>Prix du vin</th>
+                    <th>Nom du vin</th>
+                    <th>Année</th>
                 </tr>
             </thead>
             <tbody>
                 <?php foreach($noteMoyenneParVin as $resultat): ?>
                     <tr>
                         <td><?= $resultat['notemoyenne'] ?></td>
-                        <td><?= $resultat['nom'] ?></td>
                         <td><?= $resultat['prixmoyen'] ?></td>
+                        <td><?= $resultat['nom'] ?></td>
+                        <td><?= $resultat['annee'] ?></td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>

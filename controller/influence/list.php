@@ -76,7 +76,13 @@ $request = "select vin.nom, round(avg(vin.prix), 2) as prixMoyen, round(avg(note
 from vin
 join note on (vin.id = note.vin_id)
 group by vin.nom
-order by noteMoyenne;";
+order by noteMoyenne desc;";
+
+$request = "select vin.nom, vin.annee, round(avg(vin.prix), 2) as prixMoyen, round(avg(note.note), 2) as noteMoyenne
+from vin
+join note on (vin.id = note.vin_id)
+group by vin.id
+order by noteMoyenne desc;";
 
 $noteMoyenneParVin = executeRequest($pdo, $request);
 

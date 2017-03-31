@@ -69,12 +69,20 @@ $request = "select annee, round(avg(note), 2) as notemoyenne from note group by 
 
 $noteMoyenneSelonAnnee = executeRequest($pdo, $request);
 
+$request = "select round(avg(note.note),2) as noteMoyenne, vin.nom, round(avg(vin.prix),2) as prixMoyen from vin
+join note on (vin.nom = note.vin_nom)
+group by vin.nom
+order by noteMoyenne desc;";
+
+$noteMoyenneParVin = executeRequest($pdo, $request);
+
 return [
     'prixMoyenModeCulture' => $prixMoyenModeCulture,
     'prixMoyenEventClimatique' => $prixMoyenEventClimatique,
     'noteMoyenneModeCulture' => $noteMoyenneModeCulture,
     'noteMoyenneTraitement' => $noteMoyenneTraitement,
     'noteMoyenneExposition' => $noteMoyenneExposition,
-    'noteMoyenneSelonAnnee' => $noteMoyenneSelonAnnee
+    'noteMoyenneSelonAnnee' => $noteMoyenneSelonAnnee,
+    'noteMoyenneParVin' => $noteMoyenneParVin
 ];
 ?>

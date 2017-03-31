@@ -137,3 +137,28 @@
         </table>
     </div>
 </div>
+
+<h3> Qualité </h3>
+<h4> sur le prix du vin </h4>
+<div class="row">
+    <div class="col-md-8">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Qualité moyenne(/20)</th>
+                    <th>Nom du vin</th>
+                    <th>Prix du vin</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach($noteMoyenneParVin as $resultat): ?>
+                    <tr>
+                        <td><?= $resultat['notemoyenne'] ?></td>
+                        <td><?= $resultat['nom'] ?></td>
+                        <td><?= $resultat['prixmoyen'] ?></td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+</div>

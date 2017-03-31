@@ -13,7 +13,7 @@ $request = "select exploitation.modeculture, round(sum(assemblage.pourcentage*vi
 	join assemblage on (vin.nom = assemblage.vin_nom) 
 	join exploitation on (assemblage.exploitation_annee = exploitation.annee and assemblage.exploitation_parcelle = exploitation.parcelle_nom) 
 	group by exploitation.modeculture
-	order by exploitation.modeculture;";
+	order by prixmoyen desc;";
 
 $prixMoyenModeCulture = executeRequest($pdo, $request);
 
@@ -22,7 +22,8 @@ join assemblage on (vin.nom = assemblage.vin_nom)
 join exploitation on (assemblage.exploitation_annee = exploitation.annee and assemblage.exploitation_parcelle = exploitation.parcelle_nom)
 join impact on(impact.exploitation_annee = exploitation.annee and impact.exploitation_parcelle = exploitation.parcelle_nom)
 join evenement on(impact.evenement_type = evenement.type)
-group by evenement.type;";
+group by evenement.type
+order by prixmoyen desc;";
 
 $prixMoyenEventClimatique = executeRequest($pdo, $request);
 
@@ -34,7 +35,7 @@ from (
 join assemblage on(assemblage.vin_nom = vinNoteMoyenne.nomDuVin) 
 join exploitation on (assemblage.exploitation_annee = exploitation.annee and assemblage.exploitation_parcelle = exploitation.parcelle_nom)
 group by exploitation.modeCulture
-order by exploitation.modeculture;";
+order by noteMoyenne desc;";
 
 $noteMoyenneModeCulture = executeRequest($pdo, $request);
 
@@ -51,10 +52,24 @@ group by traitement.nom;";
 
 $noteMoyenneTraitement = executeRequest($pdo, $request);
 
+$request = "select parcelle.exposition, round(sum(assemblage.pourcentage*vinNoteMoyenne.noteMoyenne)/(sum(assemblage.pourcentage)),2) as noteMoyenne 
+from (
+	select nom as nomDuVin, round(avg(note.note),2) as noteMoyenne 
+	from vin join note on (note.vin_nom = vin.nom) group by vin.nom
+	) as vinNoteMoyenne 
+join assemblage on(assemblage.vin_nom = vinNoteMoyenne.nomDuVin) 
+join exploitation on (assemblage.exploitation_annee = exploitation.annee and assemblage.exploitation_parcelle = exploitation.parcelle_nom)
+join parcelle on (exploitation.parcelle_nom = parcelle.nom)
+group by parcelle.exposition
+order by noteMoyenne desc;";
+
+$noteMoyenneExposition = executeRequest($pdo, $request);
+
 return [
     'prixMoyenModeCulture' => $prixMoyenModeCulture,
     'prixMoyenEventClimatique' => $prixMoyenEventClimatique,
     'noteMoyenneModeCulture' => $noteMoyenneModeCulture,
-    'noteMoyenneTraitement' => $noteMoyenneTraitement
+    'noteMoyenneTraitement' => $noteMoyenneTraitement,
+    'noteMoyenneExposition' => $noteMoyenneExposition
 ];
 ?>

@@ -91,3 +91,26 @@
         </table>
     </div>
 </div>
+
+<h3> Exposition </h3>
+<h4> sur la qualité du vin </h4>
+<div class="row">
+    <div class="col-md-8">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Type d'exposition</th>
+                    <th>Qualité (/20)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach($noteMoyenneExposition as $resultat): ?>
+                    <tr>
+                        <td><?= $resultat['exposition'] ?></td>
+                        <td><?= $resultat['notemoyenne'] ?></td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+</div>

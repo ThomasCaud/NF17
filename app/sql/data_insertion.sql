@@ -34,6 +34,9 @@ INSERT INTO vin (id, nom, prix, annee) values
     (4, 'Sancerre', 5.1, 2016),
     (5, 'Pouilly-Fuissé', 3.5, 2017);
 
+-- Assure que l'index de l'id est à jour pour l'auto incrementation --
+ALTER SEQUENCE vin_id_seq RESTART WITH 6;
+
 INSERT INTO note (vin_id, critere_nom, note) values
     (1 , 'Equilibre gustatif', 12),
     (1 , 'Longueur en bouche', 10),

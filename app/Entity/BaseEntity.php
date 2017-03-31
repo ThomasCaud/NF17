@@ -63,10 +63,13 @@ abstract class BaseEntity
 
     public function insert($data) {
         $pdo = Connexion::getConnexion();
-        $fields = array_key($data);
-        $sth = $pdo->prepare("INSERT INTO ".static::getTable()." (".implode(", ", $fields).") VALUES (:".implode(", :", $field).")");
+        $fields = array_keys($data);
+        $pk = is_array(static::getPrimaryKey()) ? implode(', ', static::getPrimaryKey()) : static::getPrimaryKey();
+        $sth = $pdo->prepare("INSERT INTO ".static::getTable()." (".implode(", ", $fields).") VALUES (:".implode(", :", $fields).") RETURNING ($pk)");
 
-        return $sth->execute($data);
+        $sth->execute($data);
+
+        return $sth->fetch(PDO::FETCH_COLUMN);
     }
 
     public function delete($id) {

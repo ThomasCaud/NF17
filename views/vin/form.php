@@ -8,7 +8,10 @@
       <label>Prix</label>
       <input type="text" name="vin[prix]" class="form-control" value="<?= isset($vin['prix']) ? $vin['prix'] : '' ?>">
     </div>
-
+    <div class="form-group">
+      <label>Année</label>
+      <input type="text" name="vin[annee]" class="form-control" value="<?= isset($vin['annee']) ? $vin['annee'] : '' ?>">
+    </div>
     <div class="row">
         <div class="col-md-12">
             <label for="cepage">Cépage</label>

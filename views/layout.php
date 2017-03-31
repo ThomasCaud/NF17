@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
+      <base href="<?= Config::get('baseUrl') ?: '/'; ?>" />
     <meta charset="utf-8">
     <title>NF17</title>
-    <link rel="stylesheet" href="/public/bootstrap/css/bootstrap.css" media="screen" title="no title">
+    <link rel="stylesheet" href="public/bootstrap/css/bootstrap.css" media="screen" title="no title">
   </head>
   <body>
       <div class="container">

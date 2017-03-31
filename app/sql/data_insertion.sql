@@ -27,20 +27,20 @@ INSERT INTO cepage values
     ('Carignan'),
     ('Grenache');
 
-INSERT INTO vin values
-    ('Saint-Amour', 5.3),
-    ('Chablis', 4.1),
-    ('Pouilly-Fuissé', 3.0),
-    ('Sancerre', 5.1);
+INSERT INTO vin (id, nom, prix, annee) values
+    (1, 'Saint-Amour', 5.3, 2016),
+    (2, 'Chablis', 4.1, 2016),
+    (3, 'Pouilly-Fuissé', 3.0, 2016),
+    (4, 'Sancerre', 5.1, 2016);
 
-INSERT INTO note (vin_nom, critere_nom, note, annee) values
-    ('Saint-Amour', 'Equilibre gustatif', 12, 2016),
-    ('Saint-Amour', 'Longueur en bouche', 10, 2016),
-    ('Chablis', 'Equilibre gustatif', 5, 2016),
-    ('Chablis', 'Longueur en bouche', 10, 2016),
-    ('Sancerre', 'Longueur en bouche', 16, 2016),
-    ('Pouilly-Fuissé', 'Longueur en bouche', 12, 2017),
-    ('Pouilly-Fuissé', 'Equilibre gustatif', 14, 2017);
+INSERT INTO note (vin_id, critere_nom, note) values
+    (1 , 'Equilibre gustatif', 12),
+    (1 , 'Longueur en bouche', 10),
+    (2, 'Equilibre gustatif', 5),
+    (4, 'Longueur en bouche', 16),
+    (2, 'Longueur en bouche', 10),
+    (3, 'Longueur en bouche', 12),
+    (3, 'Equilibre gustatif', 14);
 
 INSERT INTO parcelle (nom, surface, typeSol, exposition, cepage_nom) values
     ('P-01', 1, 'Crayeux',  'Normal', 'Sauvignon'),
@@ -52,19 +52,19 @@ INSERT INTO exploitation (parcelle_nom, annee, modeCulture) values
     ('P-02', 2016, 'Enherbé'),
     ('P-02', 2017, 'Desherbé');
 
-INSERT INTO assemblage (pourcentage, exploitation_annee, exploitation_parcelle, vin_nom) VALUES
-    (50.0, 2016, 'P-01', 'Chablis'),
-    (50.0, 2016, 'P-02', 'Chablis'),
-    (100.0, 2016, 'P-01', 'Saint-Amour'),
-    (100.0, 2016, 'P-02', 'Pouilly-Fuissé'),
-    (50.0, 2016, 'P-01', 'Sancerre'),
-    (50.0, 2016, 'P-02', 'Sancerre'),
-    (100.0, 2017, 'P-02', 'Pouilly-Fuissé');
+INSERT INTO assemblage (pourcentage, exploitation_annee, exploitation_parcelle, vin_id) VALUES
+    (50.0, 2016, 'P-01', 2),
+    (50.0, 2016, 'P-02', 2),
+    (100.0, 2016, 'P-01', 1 ),
+    (100.0, 2016, 'P-02', 3),
+    (50.0, 2016, 'P-01', 4),
+    (50.0, 2016, 'P-02', 4),
+    (100.0, 2017, 'P-02', 3);
 
 INSERT INTO impact (exploitation_annee, exploitation_parcelle, evenement_type, date) values
     (2016, 'P-01', 'Sécheresse', '2016-07-02'),
     (2016, 'P-01', 'Ouragan', '2016-09-02'),
-    (2016, 'P-02', 'Ouragan',    '2016-08-02');
+    (2016, 'P-02', 'Ouragan', '2016-08-02');
 
 INSERT INTO traite (exploitation_annee, exploitation_parcelle, traitement_nom) values
     (2016, 'P-01', 'Pesticide'),

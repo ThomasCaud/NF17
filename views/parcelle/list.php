@@ -1,4 +1,4 @@
-<a href="/parcelle/add" class="btn btn-primary">Ajouter une parcelle</a>
+<a href="parcelle/add" class="btn btn-primary">Ajouter une parcelle</a>
 <div class="row">
     <div class="col-md-12">
         <h2>Liste des parcelles</h2>

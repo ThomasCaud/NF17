@@ -1,5 +1,5 @@
 <?php
-	include 'Connexion.php';
+	include_once 'Connexion.php';
 	$connection = Connexion::getConnexion();
 	$vins = $connection->query('SELECT * FROM vin');
 

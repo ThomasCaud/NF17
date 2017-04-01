@@ -1,6 +1,6 @@
 <?php
-include "../app/View.php";
-include "../app/Config.php";
+include_once "../app/View.php";
+include_once "../app/Config.php";
 
 $uri = isset($_SERVER["REDIRECT_URL"]) ? $_SERVER["REDIRECT_URL"] : $_SERVER["REQUEST_URI"];
 
@@ -19,7 +19,7 @@ if (empty($uri)) {
 }
 $action = trim($action, '/');
 
-// include controller if exist else 404
+// include_once controller if exist else 404
 $controller = "../controller/".$action;
 $vars = [];
 if (!file_exists($controller)) {

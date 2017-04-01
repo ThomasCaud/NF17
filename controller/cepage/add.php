@@ -1,9 +1,8 @@
 <?php
 
-include '../app/Connexion.php';
-include '../app/Entity/Cepage.php';
-include '../app/Form.php';
-include '../app/Config.php';
+include_once '../app/Connexion.php';
+include_once '../app/Entity/Cepage.php';
+include_once '../app/Form.php';
 
 $pdo = Connexion::getConnexion();
 $errors = false;

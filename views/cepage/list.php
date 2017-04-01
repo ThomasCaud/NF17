@@ -1,4 +1,4 @@
-<a href="/cepage/add" class="btn btn-primary">Ajouter un cepage</a>
+<a href="cepage/add" class="btn btn-primary">Ajouter un cepage</a>
 <div class="row">
     <div class="col-md-8">
         <h2>Liste des cepages</h2>

@@ -1,4 +1,4 @@
-<a href="/critere/add" class="btn btn-primary">Ajouter un critere</a>
+<a href="critere/add" class="btn btn-primary">Ajouter un critere</a>
 <div class="row">
     <div class="col-md-8">
         <h2>Liste des criteres</h2>

@@ -1,6 +1,6 @@
 <?php
 
-include '../app/Connexion.php';
+include_once '../app/Connexion.php';
 
 $filtres = [
     'cepage' => [

@@ -1,4 +1,4 @@
-<a href="/evenement/add" class="btn btn-primary">Ajouter un type d'évenement</a>
+<a href="evenement/add" class="btn btn-primary">Ajouter un type d'évenement</a>
 <div class="row">
     <div class="col-md-8">
         <h2>Liste des évenements</h2>

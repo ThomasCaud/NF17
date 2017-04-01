@@ -1,8 +1,8 @@
 <?php
 
-include '../app/Connexion.php';
-include '../app/Entity/Critere.php';
-include '../app/Form.php';
+include_once '../app/Connexion.php';
+include_once '../app/Entity/Critere.php';
+include_once '../app/Form.php';
 
 $pdo = Connexion::getConnexion();
 $errors = false;

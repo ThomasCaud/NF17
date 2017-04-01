@@ -1,2 +1,2 @@
 <h2>Modifier un evenement</h2>
- <?php include 'form.php'; ?>
+ <?php include_once 'form.php'; ?>

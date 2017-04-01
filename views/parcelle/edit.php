@@ -1,2 +1,2 @@
 <h2>Modifier une parcelle</h2>
- <?php include 'form.php'; ?>
+ <?php include_once 'form.php'; ?>

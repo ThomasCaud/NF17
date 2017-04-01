@@ -1,4 +1,4 @@
-<a href="/note/add" class="btn btn-primary">Ajouter une note</a>
+<a href="note/add" class="btn btn-primary">Ajouter une note</a>
 <div class="row">
     <div class="col-md-12">
         <h2>Liste des notes</h2>

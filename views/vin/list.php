@@ -1,4 +1,4 @@
-<a href="/vin/add" class="btn btn-primary">Ajouter un vin</a>
+<a href="vin/add" class="btn btn-primary">Ajouter un vin</a>
 <div class="row">
     <div class="col-md-8">
         <h2>Liste des vins</h2>

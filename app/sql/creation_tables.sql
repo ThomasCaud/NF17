@@ -41,17 +41,20 @@ CREATE TABLE impact (
 			PRIMARY KEY (exploitation_parcelle, evenement_type, date)
 			);
 CREATE TABLE vin (
-			nom varchar(255) PRIMARY KEY,
+			id SERIAL PRIMARY KEY,
+			nom varchar(255),
 			prix NUMERIC(10, 2) NOT NULL,
-			CHECK (prix >= 0)
+			annee int,
+			CHECK (prix >= 0),
+			UNIQUE (nom, annee)
 			);
 CREATE TABLE assemblage (
 			pourcentage NUMERIC(5, 2) NOT NULL DEFAULT 100,
 			exploitation_annee int,
 			exploitation_parcelle varchar(255),
 			FOREIGN KEY (exploitation_annee, exploitation_parcelle) REFERENCES exploitation (annee,parcelle_nom) ON UPDATE CASCADE ON DELETE CASCADE,
-			vin_nom VARCHAR(255) REFERENCES vin (nom) ON UPDATE CASCADE ON DELETE CASCADE,
-			PRIMARY KEY (vin_nom, exploitation_parcelle, exploitation_annee),
+			vin_id SERIAL REFERENCES vin (id) ON UPDATE CASCADE ON DELETE CASCADE,
+			PRIMARY KEY (vin_id, exploitation_parcelle, exploitation_annee),
 			CHECK (pourcentage > 0 AND pourcentage <= 100)
 			);
 CREATE TABLE critere (
@@ -60,10 +63,9 @@ CREATE TABLE critere (
 CREATE TABLE note (
 			note int NOT NULL CHECK(note >= 0 AND note <= 20),
 			critere_nom VARCHAR(255) REFERENCES critere(nom) ON UPDATE CASCADE ON DELETE CASCADE,
-			vin_nom  VARCHAR(255) REFERENCES vin(nom) ON UPDATE CASCADE ON DELETE CASCADE,
-			annee int NOT NULL,
-			PRIMARY KEY(critere_nom, vin_nom)
+			vin_id SERIAL REFERENCES vin (id) ON UPDATE CASCADE ON DELETE CASCADE,
+			PRIMARY KEY(critere_nom, vin_id)
 			);
 
 CREATE VIEW vin_view AS
-	SELECT vin.*, ROUND(AVG(note), 2) as note FROM vin LEFT JOIN note ON vin.nom = note.vin_nom GROUP BY vin.nom;
+	SELECT vin.*, ROUND(AVG(note), 2) as note FROM vin LEFT JOIN note ON vin.id = note.vin_id GROUP BY vin.id;

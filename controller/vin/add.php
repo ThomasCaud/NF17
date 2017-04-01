@@ -13,25 +13,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $vin = $_POST['vin'];
     $form = new Form($vin);
     $form->constraints('nom', ['required' => true]);
+    $form->constraints('annee', ['required' => true]);
     $form->constraints('prix', ['required' => true]);
 
     $errors = $form->checkForm();
 
-    if (Vin::get($vin['nom'])) {
-        $errors['nom'] = "Le vin ".$vin['nom']." existe déjà";
-    }
-
     if(!$errors) {
-        $sth = $pdo->prepare('INSERT INTO vin(nom, prix) VALUES (:nom, :prix)');
+        $sth = $pdo->prepare('INSERT INTO vin(nom, prix, annee) VALUES (:nom, :prix, :annee)');
         try {
             $pdo->beginTransaction();
-            $sth->execute(['nom' => $vin['nom'], 'prix' => $vin['prix']]);
+            $id = Vin::insert([
+                'nom'   => $vin['nom'],
+                'prix'  => $vin['prix'],
+                'annee' => $vin['annee'],
+            ]);
 
             foreach ($vin['cepage'] as $cepage) {
-                $sth2 = $pdo->prepare('INSERT INTO assemblage (vin_nom, exploitation_parcelle, exploitation_annee, pourcentage) VALUES (:nom, :parcelle, :annee, :pourcentage)');
+                $sth2 = $pdo->prepare('INSERT INTO assemblage (vin_id, exploitation_parcelle, exploitation_annee, pourcentage) VALUES (:id, :parcelle, :annee, :pourcentage)');
                 list($parcelle, $annee) = explode(';', $cepage['nom']);
                 $sth2->execute([
-                    'nom' => $vin['nom'],
+                    'id' => $id,
                     'parcelle' => $parcelle,
                     'annee' => $annee,
                     'pourcentage' => $cepage['pourcentage'],
@@ -45,6 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } catch(PDOException $e) {
             $pdo->rollback();
             $errors[] = "Erreur interne de la BDD";
+            throw $e;
         }
     }
 }

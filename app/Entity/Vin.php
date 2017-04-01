@@ -9,6 +9,6 @@ class Vin extends BaseEntity
     }
 
     public static function getPrimaryKey() {
-        return 'nom';
+        return 'id';
     }
 }

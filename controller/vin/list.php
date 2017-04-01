@@ -9,7 +9,7 @@ $filtres = [
     ],
     'annee' => [
         'label' => 'Année',
-        'field' => 'exploitation.annee',
+        'field' => 'vin.annee',
     ],
     'modeCulture' => [
         'label' => 'Mode de culture',
@@ -62,10 +62,10 @@ foreach ($filtres as $name => $values) {
 }
 
 
-$sql = 'SELECT DISTINCT vin_view.* FROM vin_view';
+$sql = 'SELECT DISTINCT vin.* FROM vin_view as vin';
 
 if ($conditions) {
-    $sql .= ' JOIN assemblage ON assemblage.vin_nom = vin_view.nom
+    $sql .= ' JOIN assemblage ON assemblage.vin_id = vin.id
               JOIN exploitation ON (exploitation.annee = assemblage.exploitation_annee AND assemblage.exploitation_parcelle = exploitation.parcelle_nom)
               JOIN parcelle ON exploitation.parcelle_nom = parcelle.nom
               JOIN cepage ON cepage.nom = parcelle.cepage_nom';

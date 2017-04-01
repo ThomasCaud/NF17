@@ -4,10 +4,9 @@ include '../app/Connexion.php';
 
 $pdo = Connexion::getConnexion();
 
-$evenementType = $_GET['oldName'];
-$sql = "delete from evenement where type = '" . $evenementType . "';";
+$evenementType = $_GET['type'];
 
-$query = $pdo->query($sql);
-$query->fetchAll();
+$sth = $pdo->prepare('DELETE FROM evenement WHERE type = :type');
+$sth->execute(['type' => $evenementType]);
 
-//header('Location: /evenement/list');
+header('Location: /evenement/list');

@@ -4,10 +4,9 @@ include '../app/Connexion.php';
 
 $pdo = Connexion::getConnexion();
 
-$critereName = $_GET['oldName'];
-$sql = "delete from critere where nom = '" . $critereName . "';";
+$critereNom = $_GET['nom'];
 
-$query = $pdo->query($sql);
-$query->fetchAll();
+$sth = $pdo->prepare('DELETE FROM critere WHERE nom = :nom');
+$sth->execute(['nom' => $critereNom]);
 
 header('Location: /critere/list');

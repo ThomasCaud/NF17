@@ -13,8 +13,8 @@
                     <tr>
                         <td><?= $critere['nom'] ?></td>
                         <td>
-                            <a href="/critere/edit?oldName=<?= $critere['nom'] ?>">Editer</a> -
-                            <a href="/critere/delete?oldName=<?= $critere['nom']?>">Supprimer</a>
+                            <a href="critere/edit?oldName=<?= $critere['nom'] ?>">Editer</a> -
+                            <a href="critere/delete?oldName=<?= $critere['nom']?>">Supprimer</a>
                         </td>
                     </tr>
                 <?php endforeach; ?>

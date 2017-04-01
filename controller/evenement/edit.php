@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     ])) {
         $errors[] = "Erreur interne, impossible de mettre à jour l'evenement";
     } else {
-        header('Location: /evenement/list');
+        redirectTo("evenement/list");
     }
 }
 

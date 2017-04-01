@@ -13,8 +13,8 @@
                     <tr>
                         <td><?= $cepage['nom'] ?></td>
                         <td>
-                            <a href="/cepage/edit?oldName=<?= $cepage['nom'] ?>">Editer</a> -
-                            <a href="/cepage/delete?oldName=<?= $cepage['nom']?>">Supprimer</a>
+                            <a href="cepage/edit?oldName=<?= $cepage['nom'] ?>">Editer</a> -
+                            <a href="cepage/delete?oldName=<?= $cepage['nom']?>">Supprimer</a>
                         </td>
                     </tr>
                 <?php endforeach; ?>

@@ -5,9 +5,14 @@ include "../app/Config.php";
 $uri = isset($_SERVER["REDIRECT_URL"]) ? $_SERVER["REDIRECT_URL"] : $_SERVER["REQUEST_URI"];
 
 $baseUrl = Config::get('baseUrl');
-$uri = str_replace($baseUrl, '', $uri);
 
-if ($uri == '/') {
+function redirectTo($uri) {
+    $baseUrl = Config::get('baseUrl');
+    header("Location: ".$baseUrl.$uri);
+}
+
+$uri = preg_replace("#^$baseUrl#", "", $uri);
+if (empty($uri)) {
     $action = "index.php";
 } else {
     $action = $uri.".php";

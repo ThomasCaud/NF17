@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     ])) {
         $errors[] = "Erreur interne, impossible de mettre à jour le vin";
     } else {
-        header('Location: /vin/list');
+        redirectTo("vin/list");
     }
 }
 

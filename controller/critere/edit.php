@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     ])) {
         $errors[] = "Erreur interne, impossible de mettre à jour le critere";
     } else {
-        header('Location: /critere/list');
+        redirectTo("critere/list");
     }
 }
 

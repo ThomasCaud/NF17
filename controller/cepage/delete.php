@@ -10,4 +10,4 @@ $sql = "delete from cepage where nom = '" . $cepageName . "';";
 $query = $pdo->query($sql);
 $query->fetchAll();
 
-header('Location: /cepage/list');
+redirectTo("cepage/list");

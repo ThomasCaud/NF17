@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     ])) {
         $errors[] = "Erreur interne, impossible de mettre à jour le parcelle";
     } else {
-        header('Location: /parcelle/list');
+        redirectTo("parcelle/list");
     }
 }
 $pdo = Connexion::getConnexion();

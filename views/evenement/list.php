@@ -13,8 +13,8 @@
                     <tr>
                         <td><?= $evenement['type'] ?></td>
                         <td>
-                            <a href="/evenement/edit?type=<?= $evenement['type'] ?>">Editer</a> -
-                            <a href="/evenement/delete?type=<?= $evenement['type']?>">Supprimer</a>
+                            <a href="evenement/edit?type=<?= $evenement['type'] ?>">Editer</a> -
+                            <a href="evenement/delete?type=<?= $evenement['type']?>">Supprimer</a>
                         </td>
                     </tr>
                 <?php endforeach; ?>

@@ -13,54 +13,54 @@ $links = [
         'label' => 'Vin',
         'number' => getNumber('vin'),
         'actions' => [
-            'Ajouter' => '/vin/add',
-            'Lister' => '/vin/list',
+            'Ajouter' => 'vin/add',
+            'Lister' => 'vin/list',
         ]
     ],
     [
         'label' => 'Cépage',
         'number' => getNumber('cepage'),
         'actions' => [
-            'Ajouter' => '/cepage/add',
-            'Lister' => '/cepage/list',
+            'Ajouter' => 'cepage/add',
+            'Lister' => 'cepage/list',
         ]
     ],
     [
         'label' => 'Parcelle',
         'number' => getNumber('parcelle'),
         'actions' => [
-            'Ajouter' => '/parcelle/add',
-            'Lister' => '/parcelle/list',
+            'Ajouter' => 'parcelle/add',
+            'Lister' => 'parcelle/list',
         ]
     ],
     [
         'label' => 'Exploitation',
         'number' => getNumber('exploitation'),
         'actions' => [
-            'Ajouter' => '/exploitation/add'
+            'Ajouter' => 'exploitation/add'
         ]
     ],
     [
         'label' => 'Influence',
         'number' => getNumber('impact'),
         'actions' => [
-            'Lister' => '/influence/list',
+            'Lister' => 'influence/list',
         ]
     ],
     [
         'label' => 'Critère',
         'number' => getNumber('critere'),
         'actions' => [
-            'Ajouter' => '/critere/add',
-            'Lister' => '/critere/list',
+            'Ajouter' => 'critere/add',
+            'Lister' => 'critere/list',
         ]
     ],
     [
         'label' => 'Evenement',
         'number' => getNumber('evenement'),
         'actions' => [
-            'Ajouter' => '/evenement/add',
-            'Lister' => '/evenement/list',
+            'Ajouter' => 'evenement/add',
+            'Lister' => 'evenement/list',
         ]
     ],
 ];

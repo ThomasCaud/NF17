@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             $pdo->commit();
 
-            header('Location: /parcelle/list');
+            redirectTo("parcelle/list");
 
         } catch(PDOException $e) {
             $pdo->rollback();

@@ -20,7 +20,7 @@
                         <td><?= $vin['note'] ? $vin['note'] . ' <small>/20</small>' : 'Pas de note' ?></td>
                         <td><?= $vin['annee'] ?></td>
                         <td>
-                            <a href="/vin/edit?id=<?= $vin['id'] ?>">Editer</a> -
+                            <a href="vin/edit?id=<?= $vin['id'] ?>">Editer</a> -
                             <a href="#">Supprimer</a> -
                             <a href="#">Noter</a>
                         </td>

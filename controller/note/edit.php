@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     ])) {
         $errors[] = "Erreur interne, impossible de mettre à jour la note";
     } else {
-        header('Location: /note/list');
+        redirectTo("note/list");
     }
 }
 $pdo = Connexion::getConnexion();

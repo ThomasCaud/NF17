@@ -10,4 +10,4 @@ $sql = "delete from critere where nom = '" . $critereName . "';";
 $query = $pdo->query($sql);
 $query->fetchAll();
 
-header('Location: /critere/list');
+redirectTo("critere/list");

@@ -3,6 +3,7 @@
 include '../app/Connexion.php';
 include '../app/Entity/Cepage.php';
 include '../app/Form.php';
+include '../app/Config.php';
 
 $pdo = Connexion::getConnexion();
 $errors = false;
@@ -27,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             $pdo->commit();
 
-            header('Location: /cepage/add');
+            redirectTo("cepage/list");
 
         } catch(PDOException $e) {
             $pdo->rollback();

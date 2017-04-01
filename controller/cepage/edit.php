@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     ])) {
         $errors[] = "Erreur interne, impossible de mettre à jour le cepage";
     } else {
-        header('Location: /cepage/list');
+        redirectTo("cepage/list");
     }
 }
 

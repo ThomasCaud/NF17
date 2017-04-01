@@ -9,7 +9,7 @@
   <body>
       <div class="container">
           <header>
-              <h1><a href="/">Exploitation agricole</a></h1>
+              <h1><a href="">Exploitation agricole</a></h1>
               <br/>
           </header>
 

@@ -11,7 +11,7 @@ CREATE TABLE parcelle (
 			exposition Eexposition,
 			cepage_nom varchar(255) REFERENCES cepage(nom) ON UPDATE CASCADE ON DELETE CASCADE,
 			CHECK (surface >= 0)
-			); 
+			);
 CREATE TABLE exploitation (
 			parcelle_nom varchar(255) REFERENCES parcelle (nom) ON UPDATE CASCADE ON DELETE CASCADE,
 			annee int NOT NULL,
@@ -35,7 +35,7 @@ CREATE TABLE evenement (
 CREATE TABLE impact (
 			exploitation_annee int,
 			exploitation_parcelle varchar(255),
-			evenement_type varchar(255) REFERENCES evenement (type) ON UPDATE CASCADE,
+			evenement_type varchar(255) REFERENCES evenement (type) ON UPDATE CASCADE ON DELETE CASCADE,
 			date timestamp NOT NULL,
 			FOREIGN KEY (exploitation_annee, exploitation_parcelle) REFERENCES exploitation (annee,parcelle_nom) ON UPDATE CASCADE ON DELETE CASCADE,
 			PRIMARY KEY (exploitation_parcelle, evenement_type, date)
@@ -53,7 +53,7 @@ CREATE TABLE assemblage (
 			vin_nom VARCHAR(255) REFERENCES vin (nom) ON UPDATE CASCADE ON DELETE CASCADE,
 			PRIMARY KEY (vin_nom, exploitation_parcelle, exploitation_annee),
 			CHECK (pourcentage > 0 AND pourcentage <= 100)
-			); 
+			);
 CREATE TABLE critere (
 			nom varchar(255) PRIMARY KEY
 			);

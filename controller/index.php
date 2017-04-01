@@ -55,6 +55,14 @@ $links = [
             'Lister' => '/critere/list',
         ]
     ],
+    [
+        'label' => 'Evenement',
+        'number' => getNumber('evenement'),
+        'actions' => [
+            'Ajouter' => '/evenement/add',
+            'Lister' => '/evenement/list',
+        ]
+    ],
 ];
 
 

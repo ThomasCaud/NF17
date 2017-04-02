@@ -15,7 +15,7 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-            <label for="cepage">Cépage</label>
+            <label for="cepage">Assemblage de cépages</label>
             <div class="form-group row" id="cepage">
                 <div class="col-md-10">
                     <div class="form-group">

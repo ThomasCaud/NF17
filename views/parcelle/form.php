@@ -36,7 +36,7 @@
 		                <select class="form-control" name="parcelle[exposition]">
 		                     <option value="Normal">Normal</option>
                              <option value="Pluvieux">Pluvieux</option>
-                             <option value="Ensoleillé">Ensoleillé</option>
+                             <option value="Ensoleille">Ensoleillé</option>
                              <option value="Venteux">Venteux</option>
 		                </select>
 		            </div>

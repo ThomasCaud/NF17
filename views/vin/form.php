@@ -1,3 +1,4 @@
+<?php include_once '../app/View.php'; ?>
 <form method="post">
     <div class="form-group">
       <label >Nom</label>
@@ -18,16 +19,18 @@
             <div class="form-group row" id="cepage">
                 <div class="col-md-10">
                     <div class="form-group">
-                        <select class="form-control" name="vin[cepage][0][nom]">
-                            <?php foreach ($exploitations as $exploitation): ?>
-                                <option value="<?= $exploitation['parcelle_nom'].';'.$exploitation['annee'] ?>"><?= $exploitation['cepage_nom'].' - '.$exploitation['annee'] ?></option>
-                            <?php endforeach; ?>
-                        </select>
+                        <?= View::renderSelect(
+                            'vin[cepage][0][nom]',
+                            $vin['cepage'][0]['nom'].";".$vin['cepage'][0]['annee'],
+                            array_map(function($exploitation) {
+                                return [$exploitation['parcelle_nom'].';'.$exploitation['annee'], $exploitation['cepage_nom'].' - '.$exploitation['annee']];
+                            }, $exploitations)
+                        ); ?>
                     </div>
                 </div>
                 <div class="col-md-2">
                     <div class="input-group">
-                        <input type="number" class="form-control" name="vin[cepage][0][pourcentage]" max="100" min="1" value="">
+                        <input type="number" class="form-control" name="vin[cepage][0][pourcentage]" max="100" min="1" value="<?= isset($vin['cepage'][0]['pourcentage']) ? $vin['cepage'][0]['pourcentage'] : '' ?>">
                         <span class="input-group-addon">%</span>
                     </div>
                 </div>

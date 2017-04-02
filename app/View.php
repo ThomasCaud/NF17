@@ -29,6 +29,23 @@ class View
 
           Self::render('404.php', $vars ?: null);
       }
+
+      public function renderSelect($name, $data, $choices) {
+          $field = "<select class='form-control' name='$name'>";
+
+          foreach ($choices as $key => $choice) {
+              if (is_array($choice)) {
+                  $key = $choice[0];
+                  $choice = $choice[1];
+              } else {
+                  $key = $choice;
+              }
+              $field .= "<option value='$key' ". ($data == $key ? 'selected' : '') .">$choice</option>";
+          }
+          $field .= "</select>";
+
+          return $field;
+      }
 }
 
 ?>

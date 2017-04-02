@@ -1,3 +1,4 @@
+<?php include_once '../app/View.php'; ?>
 <form method="post">
     <div class="form-group">
       <label >Nom</label>
@@ -15,12 +16,16 @@
 		    <div class="form-group row" id="sol">
 		        <div class="col-md-12">
 		            <div class="form-group">
-		                <select class="form-control" name="parcelle[sol]">
-		                     <option value="Calcaire">Calcaire</option>
-                             <option value="Argileux">Argileux</option>
-                             <option value="Crayeux">Crayeux</option>
-                             <option value="Marneux">Marneux</option>
-		                </select>
+                        <?= View::renderSelect(
+                            'parcelle[sol]',
+                            $parcelle['typesol'],
+                            [
+                                "Calcaire",
+                                "Argileux",
+                                "Crayeux",
+                                "Marneux",
+                            ]
+                        ); ?>
 		            </div>
 		        </div>
 		    </div>
@@ -33,12 +38,18 @@
 		    <div class="form-group row" id="exposition">
 		        <div class="col-md-12">
 		            <div class="form-group">
-		                <select class="form-control" name="parcelle[exposition]">
-		                     <option value="Normal">Normal</option>
-                             <option value="Pluvieux">Pluvieux</option>
-                             <option value="Ensoleille">Ensoleillé</option>
-                             <option value="Venteux">Venteux</option>
-		                </select>
+                        <div class="form-group">
+                            <?= View::renderSelect(
+                                'parcelle[exposition]',
+                                $parcelle['exposition'],
+                                [
+                                    "Normal",
+                                    "Pluvieux",
+                                    "Ensoleille",
+                                    "Venteux",
+                                ]
+                            ); ?>
+                        </div>
 		            </div>
 		        </div>
 		    </div>
@@ -51,11 +62,11 @@
             <div class="form-group row" id="cepage">
                 <div class="col-md-12">
                     <div class="form-group">
-                        <select class="form-control" name="parcelle[cepage]">
-                            <?php foreach ($cepages as $cepage): ?>
-                                <option value="<?= $cepage['nom'] ?>"><?= $cepage['nom'] ?></option>
-                            <?php endforeach; ?>
-                        </select>
+                        <?= View::renderSelect(
+                            'parcelle[cepage]',
+                            $parcelle['cepage_nom'],
+                            array_column($cepages, 'nom')
+                        ); ?>
                     </div>
                 </div>
             </div>

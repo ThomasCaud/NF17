@@ -14,4 +14,9 @@
         </div>
     <?php endforeach; ?>
     <button type="submit" class="btn btn-primary" name="submit">Noter</button>
+    <?php if ($errors): ?>
+        <div class="alert alert-danger">
+            <?= implode($errors, "<br/>") ?>
+        </div>
+    <?php endif; ?>
 </form>

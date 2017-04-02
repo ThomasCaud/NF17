@@ -20,12 +20,16 @@ $notes = [];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $notes = $_POST['note'];
-    foreach ($notes as $critere => $note) {
-        Note::insert([
-            'vin_id'      => $_GET['vin_id'],
-            'critere_nom' => $critere,
-            'note'        => $note,
-        ]);
+    try {
+        foreach ($notes as $critere => $note) {
+            Note::insert([
+                'vin_id'      => $_GET['vin_id'],
+                'critere_nom' => $critere,
+                'note'        => $note,
+            ]);
+        }
+    } catch (PDOException $e) {
+        $errors[] = "Erreur interne à la BDD";
     }
 
     redirectTo('vin/list');
@@ -35,4 +39,5 @@ return [
     'notes'    => $notes,
     'criteres' => $criteres,
     'vin'      => $vin,
+    'errors'   => isset($errors) ? $errors : false,
 ];

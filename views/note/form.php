@@ -6,9 +6,12 @@
             <div class="form-group row" id="vin">
                 <div class="col-md-10">
                     <div class="form-group">
-                        <select class="form-control" name="note[vin_nom]">
+                        <select class="form-control" name="note[vin_id]">
                             <?php foreach ($vins as $vin): ?>
-                                <option value="<?= $vin['nom'] ?>"><?= $vin['nom'] ?></option>
+                                <option value="<?= $vin['nom'] ?>"
+                                    <?php if(isset($nomVinModifie['nom']) && $vin['nom'] == $nomVinModifie['nom']){ echo "Selected";} ?>
+                                >
+                                <?= $vin['nom'] ?></option>
                             <?php endforeach; ?>
                         </select>
                     </div>
@@ -23,9 +26,14 @@
             <div class="form-group row" id="critere">
                 <div class="col-md-10">
                     <div class="form-group">
-                        <select class="form-control" name="note[critere_nom]" value="Couleur">
+                        <select id="critereName" class="form-control" name="note[critere_nom]">
                             <?php foreach ($criteres as $critere): ?>
-                                <option value="<?= $critere['nom'] ?>"><?= $critere['nom'] ?></option>
+                                <option 
+                                    value="<?= $critere['nom'] ?>" 
+                                    <?php if(isset($note['critere_nom']) && $critere['nom'] == $note['critere_nom']){ echo "Selected";} ?>
+                                >
+                                <?= $critere['nom'] ?>
+                                </option>
                             <?php endforeach; ?>
                         </select>
                     </div>

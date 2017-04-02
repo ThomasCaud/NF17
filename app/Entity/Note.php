@@ -9,6 +9,6 @@ class Note extends BaseEntity
     }
 
     public static function getPrimaryKey() {
-        return ['critere_nom','vin_nom'];
+        return ['critere_nom','vin_id'];
     }
 }

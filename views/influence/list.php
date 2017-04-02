@@ -1,5 +1,8 @@
 <h2> Liste des requêtes sur l'influences </h2>
 
+<h3>Prix moyen des vins : <?= $moyennesGlobales['prix'] ?> €</h3>
+<h3>Note moyenne des vins : <?= $moyennesGlobales['note'] ?> <small>/20</small></h3>
+
 <h3> Modes de culture</h3>
 
 <h4> sur le prix du vin </h4>

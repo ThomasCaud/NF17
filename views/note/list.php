@@ -8,6 +8,7 @@
                     <th>Note</th>
                     <th>Critere utilisé</th>
                     <th>Vin noté</th>
+                    <th>Année du vin</th>
                 </tr>
             </thead>
             <tbody>
@@ -15,7 +16,8 @@
                     <tr>
                         <td><?= $note['note'] ?></td>
                         <td><?= $note['critere_nom'] ?></td>
-                        <td><?= $note['vin_nom'] ?></td>
+                        <td><?= $note['nom'] ?></td>
+                        <td><?= $note['annee'] ?></td>
                         <td>
                             <a href="note/edit?vin_nom=<?= $note['vin_nom'] ?>&critere_nom=<?= $note['critere_nom'] ?>&note=<?= $note['note'] ?>">Editer</a>
                         </td>

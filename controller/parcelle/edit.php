@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!Parcelle::update($_GET['nom'], [
         'nom' => $parcelleData['nom'],
         'surface'=> $parcelleData['surface'],
-	    'typeSol'=> $parcelleData['typeSol'],
+	    'typeSol'=> $parcelleData['sol'],
         'exposition'=> $parcelleData['exposition'],
         'cepage_nom'=> $parcelleData['cepage'],
     ])) {

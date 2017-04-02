@@ -69,7 +69,51 @@
     </div>
 </div>
 
+<h4> sur la qualité du vin </h4>
+<div class="row">
+    <div class="col-md-8">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Evenement climatique</th>
+                    <th>Qualité moyenne(/20)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach($noteMoyenneEventClimatique as $resultat): ?>
+                    <tr>
+                        <td><?= $resultat['type'] ?></td>
+                        <td><?= $resultat['notemoyenne'] ?></td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+</div>
+
 <h3> Traitements phytosanitaires </h3>
+<h4> sur le prix du vin </h4>
+<div class="row">
+    <div class="col-md-8">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Traitement phytosanitaire</th>
+                    <th>Prix moyen(€)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach($prixMoyenTraitement as $resultat): ?>
+                    <tr>
+                        <td><?= $resultat['nom'] ?></td>
+                        <td><?= $resultat['prixmoyen'] ?></td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+</div>
+
 <h4> sur la qualité du vin </h4>
 <div class="row">
     <div class="col-md-8">
@@ -93,6 +137,28 @@
 </div>
 
 <h3> Exposition </h3>
+<h4> sur le prix du vin </h4>
+<div class="row">
+    <div class="col-md-8">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Type d'exposition</th>
+                    <th>Prix moyen(€)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach($prixMoyenExposition as $resultat): ?>
+                    <tr>
+                        <td><?= $resultat['exposition'] ?></td>
+                        <td><?= $resultat['prixmoyen'] ?></td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+</div>
+
 <h4> sur la qualité du vin </h4>
 <div class="row">
     <div class="col-md-8">
@@ -116,6 +182,28 @@
 </div>
 
 <h3> Année </h3>
+<h4> sur le prix du vin </h4>
+<div class="row">
+    <div class="col-md-8">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Année</th>
+                    <th>Prix moyen(€)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach($prixMoyenSelonAnnee as $resultat): ?>
+                    <tr>
+                        <td><?= $resultat['annee'] ?></td>
+                        <td><?= $resultat['prixmoyen'] ?></td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+</div>
+
 <h4> sur la qualité du vin </h4>
 <div class="row">
     <div class="col-md-8">

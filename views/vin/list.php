@@ -17,12 +17,16 @@
                     <tr>
                         <td><?= $vin['nom'] ?></td>
                         <td><?= $vin['prix'] ?> €</td>
-                        <td><?= $vin['note'] ? $vin['note'] . ' <small>/20</small>' : 'Pas de note' ?></td>
+                        <td>
+                            <?php if ($vin['note']): ?>
+                                <a href="vin/note/edit?vin_id=<?= $vin['id'] ?>"><?= $vin['note'] ?><small>/20</small></a>
+                            <?php else: ?>
+                                <a href="vin/note/add?vin_id=<?= $vin['id'] ?>">Noter</a>
+                            <?php endif; ?>
+                        </td>
                         <td><?= $vin['annee'] ?></td>
                         <td>
-                            <a href="vin/edit?id=<?= $vin['id'] ?>">Editer</a> -
-                            <a href="#">Supprimer</a> -
-                            <a href="#">Noter</a>
+                            <a href="vin/edit?id=<?= $vin['id'] ?>">Editer</a>
                         </td>
                     </tr>
                 <?php endforeach; ?>

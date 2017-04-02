@@ -19,7 +19,7 @@
                         <td><?= $note['nom'] ?></td>
                         <td><?= $note['annee'] ?></td>
                         <td>
-                            <a href="note/edit?vin_nom=<?= $note['vin_nom'] ?>&critere_nom=<?= $note['critere_nom'] ?>&note=<?= $note['note'] ?>">Editer</a>
+                            <a href="note/edit?vin_id=<?= $note['vin_id'] ?>&critere_nom=<?= $note['critere_nom'] ?>&note=<?= $note['note'] ?>">Editer</a>
                         </td>
                     </tr>
                 <?php endforeach; ?>

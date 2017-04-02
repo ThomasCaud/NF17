@@ -16,15 +16,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $errors = $form->checkForm();
 
-    if (Note::get(['critere_nom' => $note['critere_nom'], 'vin_nom' => $note['vin_nom']])) {
-        $errors[] = "Le vin ".$note['vin_nom']." a déjà été noté sur le critère ".$note['critere_nom'];
+    if (Note::get(['critere_nom' => $note['critere_nom'], 'vin_id' => $note['vin_id']])) {
+        $errors[] = "Le vin ID: ".$note['vin_id']." a déjà été noté sur le critère ".$note['critere_nom'];
     }
 
     if(!$errors) {
-        $sth = $pdo->prepare('INSERT INTO note(note, critere_nom, vin_nom) VALUES (:note, :critere_nom, :vin_nom)');
+        $sth = $pdo->prepare('INSERT INTO note(note, critere_nom, vin_id) VALUES (:note, :critere_nom, :vin_id)');
         try {
             $pdo->beginTransaction();
-            $sth->execute(['note' => $note['note'], 'critere_nom' => $note['critere_nom'], 'vin_nom' => $note['vin_nom']]);
+            $sth->execute(['note' => $note['note'], 'critere_nom' => $note['critere_nom'], 'vin_id' => $note['vin_id']]);
 
             $pdo->commit();
 

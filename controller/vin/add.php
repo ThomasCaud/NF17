@@ -8,6 +8,13 @@ $pdo = Connexion::getConnexion();
 $errors = false;
 $vin = false;
 
+$vin['cepage'] = [
+    [
+        'pourcentage' => '',
+        'nom' => '',
+        'annee' => ''
+    ]
+];
 // Si le formulaire est soumit
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $vin = $_POST['vin'];

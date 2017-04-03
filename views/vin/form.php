@@ -16,12 +16,13 @@
     <div class="row">
         <div class="col-md-12">
             <label for="cepage">Assemblage de cépages</label>
-            <div class="form-group row" id="cepage">
-                <div class="col-md-10">
-                    <div class="form-group">
-                        <?= View::renderSelect(
-                            'vin[cepage][0][nom]',
-                            $vin['cepage'][0]['nom'].";".$vin['cepage'][0]['annee'],
+            <?php foreach ($vin['cepage'] as $key => $cepage): ?>
+                <div class="form-group row" id="cepage">
+                    <div class="col-md-10">
+                        <div class="form-group">
+                            <?= View::renderSelect(
+                            "vin[cepage][$key][nom]",
+                            $cepage['nom'].";".$cepage['annee'],
                             array_map(function($exploitation) {
                                 return [$exploitation['parcelle_nom'].';'.$exploitation['annee'], $exploitation['cepage_nom'].' - '.$exploitation['annee']];
                             }, $exploitations)
@@ -30,18 +31,35 @@
                 </div>
                 <div class="col-md-2">
                     <div class="input-group">
-                        <input type="number" class="form-control" name="vin[cepage][0][pourcentage]" max="100" min="1" value="<?= isset($vin['cepage'][0]['pourcentage']) ? $vin['cepage'][0]['pourcentage'] : '' ?>">
+                        <input type="number" class="form-control" name="vin[cepage][<?= $key ?>][pourcentage]" max="100" min="1" value="<?= $cepage['pourcentage'] ?>">
                         <span class="input-group-addon">%</span>
                     </div>
                 </div>
             </div>
+            <?php endforeach; ?>
+        </div>
+        <div class="col-md-12">
+            <button type="button" onclick="addCepage();" class="btn btn-primary pull-right">Ajouter un cépage</button>
+        </div>
+        <div class="col-md-12">
+            <?php if ($errors): ?>
+                <div class="alert alert-danger">
+                    <?= implode($errors, "<br/>") ?>
+                </div>
+            <?php endif; ?>
+            <button type="submit" class="btn btn-primary">Sauvegarder</button>
         </div>
     </div>
-    <button type="button" class="btn btn-primary">Ajouter un cépage</button>
-    <?php if ($errors): ?>
-    <div class="alert alert-danger">
-        <?= $errors ? implode($errors, "<br/>") :'' ?>
-    </div>
-    <?php endif; ?>
-    <button type="submit" class="btn btn-primary">Sauvegarder</button>
+
+    <script type="text/javascript">
+        var i = 1;
+        var addCepage = function() {
+            var template = document.getElementById('cepage');
+            var newEl = template.cloneNode(true);
+            newEl.children[0].children[0].children[0].name = 'vin[cepage]['+i+'][nom]';
+            newEl.children[1].children[0].children[0].name = 'vin[cepage]['+i+'][pourcentage]';
+            template.parentElement.appendChild(newEl);
+            i++;
+        }
+    </script>
 </form>

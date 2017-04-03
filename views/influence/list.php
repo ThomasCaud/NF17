@@ -237,7 +237,7 @@
             <thead>
                 <tr>
                     <th>Qualité moyenne(/20)</th>
-                    <th>Prix du vin</th>
+                    <th>Prix du vin(€)</th>
                     <th>Nom du vin</th>
                     <th>Année</th>
                 </tr>
